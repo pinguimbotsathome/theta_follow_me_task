@@ -15,8 +15,8 @@ def callback(data):
         torso_y = data.transforms[0].transform.translation.y #esquerda fica positivo, direita fica negativo
         
         distancia_seguranca = 0.5
-        multiplicador_vel_lin_x = 0.1
-        multiplicador_vel_ang_z = 0.1
+        multiplicador_vel_lin_x = 0.4
+        multiplicador_vel_ang_z = 0.8
 
         ex = torso_x - distancia_seguranca
         ey = torso_y 
