@@ -4,8 +4,6 @@ import rospy
 from tf2_msgs.msg import TFMessage
 from geometry_msgs.msg import Twist
 
-from std_msgs.msg import Int16
-
 pub = rospy.Publisher('cmd_vel', Twist, queue_size=10)
 
 def callback(data):
