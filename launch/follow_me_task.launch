@@ -1,0 +1,5 @@
+<launch>
+	<include file="$(find openni_launch)/launch/openni.launch" />
+    <node name="openni_tracker" pkg="openni_tracker" type="openni_tracker" />
+    <node name="follow_me" pkg="theta_follow_me_task" type="follow_me_task.py" />
+</launch>

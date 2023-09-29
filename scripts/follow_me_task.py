@@ -12,22 +12,31 @@ def callback(data):
         torso_x = data.transforms[0].transform.translation.x #mais perto do robô fica negativo, mais longe do robô fica positivo
         torso_y = data.transforms[0].transform.translation.y #esquerda fica positivo, direita fica negativo
         
-        distancia_seguranca = 0.5
-        multiplicador_vel_lin_x = 0.4
-        multiplicador_vel_ang_z = 0.8
-
+        distancia_seguranca = 0.8
+        multiplicador_vel_lin_x = 0.4  
+        multiplicador_vel_ang_z = 0.9  #0.8
+ 
         ex = torso_x - distancia_seguranca
         ey = torso_y 
 
-        lin_x = 0
-        ang_z = 0
+        lin_x = 0.0
+        ang_z = 0.0
+
 
         if ex < 0.0:
+            lin_x = ex * 8.0
+        elif ex < 0.0:
             lin_x = 0.0
         else:
             lin_x = multiplicador_vel_lin_x * ex
         
-        ang_z = multiplicador_vel_ang_z * ey
+        if ey < 0.0:
+            ang_z = multiplicador_vel_ang_z * ey 
+        else:
+            ang_z = multiplicador_vel_ang_z * ey * 1.5
+            
+            
+        
 
         cmd_vel = Twist()
         cmd_vel.linear.x = lin_x
